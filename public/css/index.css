@@ -1,0 +1,33 @@
+body.fullscreen #home .info {
+    display: none;
+}
+#about {
+    padding: 100px 10px 40px;
+    text-shadow: rgba(255, 255, 255, 0.3) 0px -1px 0;
+    font-size: 13px;
+    text-align: center;
+    background: #161618;
+}
+#about p {
+    margin-bottom: 8px;
+}
+#about a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.whiteButton.full {
+  margin:0 10px;
+  color:rgba(0,0,0,.9);
+}
+
+.centered {
+  text-align: center;
+  margin: 10px 15px;
+}
+
+.info.huge {
+  font-size: 2em;
+  line-height: 1.5em;
+}

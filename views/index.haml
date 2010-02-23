@@ -1,0 +1,68 @@
+!!!
+%html
+  %head
+    %meta{ :charset => "UTF-8" }
+    %title
+      iGoogleFight &beta;
+    %link{ :href => "/css/jqtouch.min.css", :type => "text/css", :rel => "stylesheet", :media => "screen" }
+    %link{ :href => "/css/theme.min.css", :type => "text/css", :rel => "stylesheet", :media => "screen" }
+
+    %script{ :src => "/jqtouch/jquery.1.3.2.min.js", :type => "text/javascript", :charset => "utf-8" }
+    %script{ :src => "/jqtouch/jqtouch.min.js", :type => "application/x-javascript", :charset => "utf-8" }
+    %script{ :src => "/js/index.js", :type => "text/javascript", :charset => "utf-8" }
+
+    %link{ :href => "/css/index.css", :type => "text/css", :rel => "stylesheet", :media => "screen" }
+  %body
+    #about.selectable
+      %p
+        %img{ :src => "igf.png" }
+      %p
+        %strong iGoogleFight
+        %br
+        Version 0.1
+        %br
+        %a{ :href => "http://www.arko.net" } By Andre Arko
+      %p
+        %a{ :href => "http://twitter.com/indirect", :target => "_blank" }
+          @indirect on Twitter
+      %p
+        %br
+        %br
+        %a.grayButton.goback{ :href => "#" } Close
+
+    #home.current
+      .toolbar
+        %h1 iGoogleFight
+        %a#infoButton.button.slideup{ :href => "#about" } About
+
+      %form#ajax_post.form{ :method => "POST", :action => "/fight" }
+        %ul.edit.rounded
+          %li
+            %input{ :name => "q1", :type => "text", :placeholder => "Search term one" }
+          %li
+            %input{ :name => "q2", :type => "text", :placeholder => "Search term two" }
+        %a.submit.whiteButton.full{ :href => "#" }
+          Fight!
+
+      %h2 Previous fights
+      %ul.rounded
+        %li.arrow
+          %a{:href => "/fight/1"}
+            "love" vs. "hate"
+        %li.arrow
+          %a{:href => "/fight/2"}
+            "war" vs. "peace"
+        %li
+          %a.clearStorage.whiteButton.full{:href => "#"} Clear fights
+
+      %h2 Thanks, bugs, gripes, etc.
+      %ul.individual
+        %li
+          %a{ :href => "mailto:andre@arko.net", :target => "_blank" }
+            Email
+        %li
+          %a{ :href => "http://twitter.com/indirect", :target => "_blank" }
+            Twitter
+      .info
+        %p
+          Push the plus sign to add this page to your home screen for easy access and to save your fights.

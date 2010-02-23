@@ -1,0 +1,20 @@
+#get
+  .toolbar
+    %h1== Fight #{params[:id]}
+    %a.back{:href => "#"} Back
+  %ul.rounded
+    %li
+      %a{:href => "#"}= @fight[0]
+      %small.counter= @fight[2]
+    %li
+      %a{:href => "#"}= @fight[1]
+      %small.counter= @fight[3]
+  %h3.centered Winner
+  %p.info.huge= @winner
+  %p#debug.info
+    Debugging:
+    = @fight.inspect
+
+%script{ :src => "/js/fight.js", :type => "text/javascript", :charset => "utf-8" }
+:javascript
+  addFight("#{params[:id]}", ["#{@fight[0]}", "#{@fight[1]}", "#{@fight[2]}", "#{@fight[3]}"]);
