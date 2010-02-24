@@ -26,6 +26,10 @@ class IGoogleFight < Sinatra::Base
   helpers do
     include Rack::Utils
     alias_method :h, :escape_html
+
+    def n(number)
+      number.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse
+    end
   end
 
   get '/' do
