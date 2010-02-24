@@ -47,7 +47,7 @@
       %h2 Previous fights
       %ul.rounded
         - if @previously.empty?
-          %li There haven't been any fights yet.
+          %li No fights yet.
         - @previously.each do |f|
           %li.arrow
             %a{:href => "/fight/#{f.id}"}

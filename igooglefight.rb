@@ -8,10 +8,18 @@ class IGoogleFight < Sinatra::Base
   set :app_file, __FILE__
   set :static, true
 
-# Middlewares
-  use Rack::Lint
   configure :development do
     use Sinatra::ShowExceptions
+  end
+
+  configure :production do
+    not_found do
+      "We couldn't find it. We didn't try very hard, though."
+    end
+
+    error do
+      "Er... ouch."
+    end
   end
 
 # View helpers
@@ -21,13 +29,18 @@ class IGoogleFight < Sinatra::Base
   end
 
   get '/' do
-    @previously = Fight.last(10, :order => :created_at.desc)
+    @previously = Fight.last(10, :order => :created_at.asc)
     haml :index
   end
 
   get '/fight/:id' do
     @fight = Fight.get(params[:id])
-    haml :fight
+
+    unless @fight
+      raise NotFound
+    else
+      haml :fight
+    end
   end
 
   post '/fight' do
@@ -35,7 +48,7 @@ class IGoogleFight < Sinatra::Base
 
     if @fight.new?
       log_error(@fight)
-      haml :error
+      raise
     else
       haml :fight
     end
