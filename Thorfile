@@ -14,4 +14,16 @@ class Deploy < Thor::Group
     remote_pull = %{ssh arko "#{commands.join(" && ")}"}
     puts remote_pull; system remote_pull
   end
+
+class Bundle < Thor::Group
+  desc "ssh to arko.net and run bundle install --relock"
+  def bundle
+    $stdout.sync = true
+    commands = [
+      "cd /home/arko.net/domains/igf.arko.net/web/igooglefight",
+      "~/.gem/ruby/1.8/bin/bundle install --relock"
+    ]
+    bundle = %{ssh arko "#{commands.join(" && ")}"}
+    puts bundle; bundle
+  end
 end

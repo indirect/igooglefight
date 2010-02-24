@@ -1,25 +1,29 @@
-function addFight(name, data) {
-  var fights = localStorage.getItem("fights");
-  if (fights) {
-    fights = fights.split(":");
-  } else {
-    fights = [];
-  }
+$(function(){
+  console.log($("a.back").get());
 
-  if ($.inArray(name, fights) < 0) {
-    fights.push(name);
-    localStorage.setItem("fights", fights.join(":"));
-  }
+  function addFight(name, data) {
+    var fights = localStorage.getItem("fights");
+    if (fights) {
+      fights = fights.split(":");
+    } else {
+      fights = [];
+    }
 
-  localStorage.setItem(name, data.join(":"));
+    if ($.inArray(name, fights) < 0) {
+      fights.push(name);
+      localStorage.setItem("fights", fights.join(":"));
+    }
 
-  $("#debug").append("<br>Fights: "+localStorage.getItem("fights").split(":"));
-  $.each(fights, function(i, e) {
-    $("#debug").append("<br>"+e+": "+localStorage.getItem(e).split(":").join(", "));
-  });
-};
+    localStorage.setItem(name, data.join(":"));
 
-function getFight(name) {
-  [ localStorage.getItem(name+".1").split(":"),
-    localStorage.getItem(name+".2").split(":") ]
-};
+    $("#debug").append("<br>Fights: "+localStorage.getItem("fights").split(":"));
+    $.each(fights, function(i, e) {
+      $("#debug").append("<br>"+e+": "+localStorage.getItem(e).split(":").join(", "));
+    });
+  };
+
+  function getFight(name) {
+    [ localStorage.getItem(name+".1").split(":"),
+      localStorage.getItem(name+".2").split(":") ]
+  };
+});
