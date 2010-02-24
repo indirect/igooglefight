@@ -46,14 +46,14 @@
 
       %h2 Previous fights
       %ul.rounded
-        %li.arrow
-          %a{:href => "/fight/1"}
-            "love" vs. "hate"
-        %li.arrow
-          %a{:href => "/fight/2"}
-            "war" vs. "peace"
-        %li
-          %a.clearStorage.whiteButton.full{:href => "#"} Clear fights
+        - if @previously.empty?
+          %li There haven't been any fights yet.
+        - @previously.each do |f|
+          %li.arrow
+            %a{:href => "/fight/#{f.id}"}
+              == "#{f.query_1}" vs. "#{f.query_2}"
+        -# %li
+        -#   %a.clearStorage.whiteButton.full{:href => "#"} Clear fights
 
       %h2 Thanks, bugs, gripes, etc.
       %ul.individual

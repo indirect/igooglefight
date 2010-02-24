@@ -4,17 +4,17 @@
     %a.back{:href => "#"} Back
   %ul.rounded
     %li
-      %a{:href => "#"}= @fight[0]
-      %small.counter= @fight[2]
+      %a{:href => "#"}= @fight.query_1
+      %small.counter= @fight.count_1
     %li
-      %a{:href => "#"}= @fight[1]
-      %small.counter= @fight[3]
+      %a{:href => "#"}= @fight.query_2
+      %small.counter= @fight.count_2
   %h3.centered Winner
-  %p.info.huge= @winner
+  %p.info.huge= @fight.winner
   %p#debug.info
     Debugging:
-    = @fight.inspect
+    =h @fight.inspect
 
-%script{ :src => "/js/fight.js", :type => "text/javascript", :charset => "utf-8" }
-:javascript
-  addFight("#{params[:id]}", ["#{@fight[0]}", "#{@fight[1]}", "#{@fight[2]}", "#{@fight[3]}"]);
+-# %script{ :src => "/js/fight.js", :type => "text/javascript", :charset => "utf-8" }
+-# :javascript
+-#   addFight("#{params[:id]}", ["#{@fight[0]}", "#{@fight[1]}", "#{@fight[2]}", "#{@fight[3]}"]);
