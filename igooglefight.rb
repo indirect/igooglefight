@@ -1,10 +1,12 @@
 require 'sinatra/base'
 require 'haml'
-require File.expand_path("../models", __FILE__)
+require 'models'
 
 class IGoogleFight < Sinatra::Base
 # Config
   set :haml, {:format => :html5 }
+  set :app_file, __FILE__
+  set :static, true
 
 # Middlewares
   use Rack::Lint
