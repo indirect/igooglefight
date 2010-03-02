@@ -16,12 +16,12 @@ class Deploy < Thor::Group
   end
 
 class Bundle < Thor::Group
-  desc "ssh to arko.net and run bundle install --relock"
+  desc "ssh to arko.net and run bundle install"
   def bundle
     $stdout.sync = true
     commands = [
       "cd /home/arko.net/domains/igf.arko.net/web/igooglefight",
-      "~/.gem/ruby/1.8/bin/bundle install --relock"
+      "~/.gem/ruby/1.8/bin/bundle install"
     ]
     bundle = %{ssh arko "#{commands.join(" && ")}"}
     puts bundle; bundle
