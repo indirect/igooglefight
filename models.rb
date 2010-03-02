@@ -1,6 +1,6 @@
 require 'datamapper'
 
-db_file = File.expand_path("../../igooglefight.db", __FILE__)
+db_file = File.expand_path("../igooglefight.db", __FILE__)
 DataMapper::setup(:default, "sqlite3://#{db_file}")
 
 class Fight
