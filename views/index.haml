@@ -6,12 +6,11 @@
       iGoogleFight &beta;
     %link{ :href => "/css/jqtouch.min.css", :type => "text/css", :rel => "stylesheet", :media => "screen" }
     %link{ :href => "/css/theme.min.css", :type => "text/css", :rel => "stylesheet", :media => "screen" }
-
-    %script{ :src => "/jqtouch/jquery.1.3.2.min.js", :type => "text/javascript", :charset => "utf-8" }
-    %script{ :src => "/jqtouch/jqtouch.min.js", :type => "application/x-javascript", :charset => "utf-8" }
-    %script{ :src => "/js/index.js", :type => "text/javascript", :charset => "utf-8" }
-
     %link{ :href => "/css/index.css", :type => "text/css", :rel => "stylesheet", :media => "screen" }
+
+    %script{ :src => "/js/jquery-1.4.2.min.js", :type => "text/javascript", :charset => "utf-8" }
+    %script{ :src => "/js/jqtouch.min.js", :type => "application/x-javascript", :charset => "utf-8" }
+    %script{ :src => "/js/index.js", :type => "text/javascript", :charset => "utf-8" }
   %body
     #about.selectable
       %p
@@ -35,7 +34,7 @@
         %h1 iGoogleFight
         %a#infoButton.button.slideup{ :href => "#about" } About
 
-      %form#ajax_post.form{ :method => "POST", :action => "/fight" }
+      %form#newFight{ :method => "POST", :action => "/fight" }
         %ul.edit.rounded
           %li
             %input{ :name => "q1", :type => "text", :placeholder => "Search term one" }
@@ -45,15 +44,7 @@
           Fight!
 
       %h2 Previous fights
-      %ul.rounded
-        - if @previously.empty?
-          %li No fights yet.
-        - @previously.each do |f|
-          %li.arrow
-            %a{:href => "/fight/#{f.id}"}
-              == "#{f.query_1}" vs. "#{f.query_2}"
-        -# %li
-        -#   %a.clearStorage.whiteButton.full{:href => "#"} Clear fights
+      %ul#fights.rounded= partial :fights
 
       %h2 Thanks, bugs, gripes, etc.
       %ul.individual

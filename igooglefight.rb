@@ -30,10 +30,16 @@ class IGoogleFight < Sinatra::Base
     def n(number)
       number.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse
     end
+
+    def partial(page, locals={}, options={})
+      haml "_#{page}".to_sym, options.merge!(
+        :layout => false, :locals => locals)
+    end
   end
 
+# Actions
   get '/' do
-    @previously = Fight.last(10, :order => :created_at.asc)
+    @fights = Fight.last(10, :order => :created_at.asc)
     haml :index
   end
 
@@ -56,6 +62,11 @@ class IGoogleFight < Sinatra::Base
     else
       haml :fight
     end
+  end
+
+  get '/fights' do
+    @fights = Fight.last(10, :order => :created_at.asc)
+    partial :fights
   end
 
   def log_error(fight)

@@ -1,0 +1,10 @@
+- if @fights.empty?
+  %li No fights yet.
+- @fights.each do |f|
+  %li.arrow
+    %a{:href => "/fight/#{f.id}"}
+      =f.query_1
+      %span.small vs.
+      =f.query_2
+-# %li
+-#   %a.clearStorage.whiteButton.full{:href => "#"} Clear fights

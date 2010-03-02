@@ -3,7 +3,7 @@ var jQT = new $.jQTouch({
     // addGlossToIcon: false,
     // startupScreen: 'jqt_startup.png',
     statusBar: 'default',
-    cacheGetRequests: false,
+    cacheGetRequests: true,
     preloadImages: [
         '/css/img/back_button.png',
         '/css/img/back_button_clicked.png',
@@ -15,9 +15,47 @@ var jQT = new $.jQTouch({
 });
 
 $(function() {
-  $("a.clearStorage").click(function(e){
-    localStorage.clear();
-    $(this).parents("ul").slideUp();
+  $('form#newFight').submit(function(e){
+    jQT.submitForm(e, function(success){
+      if (success)
+        $("#fights").load("/fights");
+    });
     return false;
   });
+
+  // function addFight(name, data) {
+  //   var fights = localStorage.getItem('fights');
+  //   if (fights) {
+  //     fights = fights.split(':');
+  //   } else {
+  //     fights = [];
+  //   }
+  //
+  //   if ($.inArray(name, fights) < 0) {
+  //     fights.push(name);
+  //     localStorage.setItem('fights', fights.join(':'));
+  //   }
+  //
+  //   localStorage.setItem(name, data.join(':'));
+  //
+  //   $('#debug').append('<br>Fights: '+localStorage.getItem('fights').split(':'));
+  //   $.each(fights, function(i, e) {
+  //     $('#debug').append('<br>'+e+': '+localStorage.getItem(e).split(':').join(', '));
+  //   });
+  // };
+  //
+  // function getFight(name) {
+  //   [ localStorage.getItem(name+'.1').split(':'),
+  //     localStorage.getItem(name+'.2').split(':') ]
+  // };
+  //
+  // function clearFights() {
+  //   localStorage.clear();
+  // };
+  //
+  // $('a.clearStorage').click(function(e){
+  //   clearFights();
+  //   $(this).parents('ul').slideUp();
+  //   return false;
+  // });
 });
