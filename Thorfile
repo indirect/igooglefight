@@ -14,6 +14,7 @@ class Deploy < Thor::Group
     remote_pull = %{ssh arko "#{commands.join(" && ")}"}
     puts remote_pull; system remote_pull
   end
+end
 
 class Bundle < Thor::Group
   desc "ssh to arko.net and run bundle install"
@@ -24,6 +25,6 @@ class Bundle < Thor::Group
       "~/.gem/ruby/1.8/bin/bundle install"
     ]
     bundle = %{ssh arko "#{commands.join(" && ")}"}
-    puts bundle; bundle
+    puts bundle; system bundle
   end
 end
