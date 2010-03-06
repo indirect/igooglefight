@@ -1,6 +1,6 @@
 var jQT = new $.jQTouch({
     icon: 'igf.png',
-    // addGlossToIcon: false,
+    addGlossToIcon: false,
     // startupScreen: 'jqt_startup.png',
     statusBar: 'default',
     cacheGetRequests: true,
