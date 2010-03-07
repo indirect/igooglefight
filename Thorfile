@@ -9,7 +9,8 @@ class Default < Thor
     commands = [
       "cd /home/arko.net/domains/igooglefight.com/web/igooglefight",
       "git clean -f",
-      "git pull",
+      "git remote update",
+      "git reset --hard origin/master",
       "touch tmp/restart.txt"
     ]
     remote_pull = %{ssh arko "#{commands.join(" && ")}"}
