@@ -2,8 +2,7 @@
 %html
   %head
     %meta{ :charset => "UTF-8" }
-    %title
-      iGoogleFight &beta;
+    %title iGoogleFight
     %link{ :href => "/css/jqtouch.min.css", :type => "text/css", :rel => "stylesheet", :media => "screen" }
     %link{ :href => "/css/theme.min.css", :type => "text/css", :rel => "stylesheet", :media => "screen" }
     %link{ :href => "/css/index.css", :type => "text/css", :rel => "stylesheet", :media => "screen" }
@@ -12,6 +11,7 @@
     %script{ :src => "/js/jqtouch.min.js", :type => "application/x-javascript", :charset => "utf-8" }
     %script{ :src => "/js/index.js", :type => "text/javascript", :charset => "utf-8" }
   %body
+    = partial :google_analytics if options.environment == "production"
     #about.selectable
       %p
         %img{ :src => "igf.png" }
