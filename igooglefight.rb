@@ -6,7 +6,7 @@ class IGoogleFight < Sinatra::Base
 # Config
   set :haml, {:format => :html5 }
   set :app_file, __FILE__
-  set :static, true
+  set :static, false
 
   configure :development do
     use Sinatra::ShowExceptions
