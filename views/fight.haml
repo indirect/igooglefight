@@ -1,3 +1,4 @@
+= partial :google_analytics if options.environment == :production
 %div{:id => "fight_#{@fight.id}"}
   .toolbar
     %h1== Fight #{@fight.id}
