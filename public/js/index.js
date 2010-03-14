@@ -23,6 +23,11 @@ $(function() {
     return false;
   });
 
+  var a_event = $.support.touch ? 'tap' : 'click';
+  $('#fights a').bind(a_event, function(e){
+    pageTracker._trackPageview($(e.target).attr("href"));
+  });
+
   // function addFight(name, data) {
   //   var fights = localStorage.getItem('fights');
   //   if (fights) {
