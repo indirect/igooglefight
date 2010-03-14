@@ -23,9 +23,10 @@ $(function() {
     return false;
   });
 
-  var a_event = $.support.touch ? 'tap' : 'click';
-  $('#fights a').bind(a_event, function(e){
-    pageTracker._trackPageview($(e.target).attr("href"));
+  // var a_event = $.support.touch ? 'tap' : 'click';
+  $('#fights a').bind('tap', function(e){
+    // pageTracker._trackPageview($(e.target).attr("href"));
+    return true;
   });
 
   // function addFight(name, data) {
