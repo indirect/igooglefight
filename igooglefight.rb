@@ -54,7 +54,8 @@ class IGoogleFight < Sinatra::Base
   end
 
   post '/fight' do
-    @fight = Fight.create(:query_1 => params["q1"], :query_2 => params["q2"])
+    @fight = Fight.first(:query_1 => params["q2"], :query_2 => params["q1"])
+    @fight ||= Fight.first_or_create(:query_1 => params["q1"], :query_2 => params["q2"])
 
     if @fight.new?
       log_error(@fight)
